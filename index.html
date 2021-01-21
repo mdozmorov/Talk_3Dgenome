@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>index.utf8</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Mikhail Dozmorov, Ph.D." />
+    <meta name="date" content="2021-01-22" />
+    <script src="libs/header-attrs-2.6/header-attrs.js"></script>
+    <link rel="stylesheet" href="css/xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="css/xaringan-my.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+class: center, middle
+
+# The genome in action
+
+### Detecting and interpreting changes in the 3D genome organization
+
+[bit.ly/3Dgenomics](https:/bit.ly/3Dgenomics)
+
+Mikhail Dozmorov, Ph.D.    
+Associate professor, Department of Biostatistics  
+Virginia Commonwealth University   
+
+
+&lt;div class="my-footer"&gt;
+&lt;a href="https://dozmorovlab.github.io/"&gt; &lt;svg viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;"&gt;  [ comment ]  &lt;path d="M528 32H48C21.5 32 0 53.5 0 80v16h576V80c0-26.5-21.5-48-48-48zM0 432c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V128H0v304zm352-232c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16zm0 64c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16zm0 64c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16zM176 192c35.3 0 64 28.7 64 64s-28.7 64-64 64-64-28.7-64-64 28.7-64 64-64zM67.1 396.2C75.5 370.5 99.6 352 128 352h8.2c12.3 5.1 25.7 8 39.8 8s27.6-2.9 39.8-8h8.2c28.4 0 52.5 18.5 60.9 44.2 3.2 9.9-5.2 19.8-15.6 19.8H82.7c-10.4 0-18.8-10-15.6-19.8z"&gt;&lt;/path&gt;&lt;/svg&gt; dozmorovlab.github.io&lt;/a&gt; | 
+&lt;a href="https://github.com/mdozmorov"&gt; &lt;svg viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;"&gt;  [ comment ]  &lt;path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"&gt;&lt;/path&gt;&lt;/svg&gt; mdozmorov&lt;/a&gt; | 
+&lt;a href="https://twitter.com/mikhaildozmorov"&gt; &lt;svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;"&gt;  [ comment ]  &lt;path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"&gt;&lt;/path&gt;&lt;/svg&gt; @mikhaildozmorov&lt;/a&gt;
+&lt;/div&gt;
+
+---
+## Overview
+
+I. Normalization and differential analysis of Hi-C data
+
+- HiCcompare
+- multiHiCcompare
+
+&lt;br&gt; &amp;nbsp;
+
+II. Detection and differential analysis of Topologically Associating Domains (TADs)
+
+- SpectralTAD
+- TADcompare
+
+&lt;!--
+- Predicting the exact location of TAD boundaries
+    - preciseTAD
+--&gt;
+    
+---
+## The 3D structure of the genome
+
+- Human genome is big - ~3.2 billion base pairs
+- ~4 meters (~12ft) of the diploid genome is packed into the ~10um nucleus
+- ~800 trips from Earth to Sun in ~30T cells from the human body
+
+.center[&lt;img src="img/genome_scales.png" width = 600&gt;]
+
+&lt;div style="font-size: small;"&gt; 
+
+Human body has approximately 30 trillion human cells (excluding trillions of microbiome cells); Stretched haploid genome would be roughly 2 meters - each cell has 4 meters of DNA (1 m = 3.28 ft); 30 trillion * 4 meters = 120 trillion meters; Convert to miles: 120 trillion meters / 1609.34 = 7.45*10^{10}; Convert to Earth-Sun distance: 7.45*10^{10} / 91.43*10^6 = 814.83
+&lt;/div&gt;
+
+---
+##The 3D genome is not static
+
+- The 3D structure of the genome plays a role in many diseases 
+
+- Changes in the 3D genome organization are an ~~emerging~~ established hallmark of cancer
+
+- Disruption of the 3D genomic structure can lead to rewiring of enhancer-promoter interactions and changes in gene expression -&gt; disease
+
+---
+## Chromatin conformation capture technologies 
+
+.pull-left[
+- 3C, 4C, 5C, Hi-C  
+
+- Capture-(Hi)C, ChIA-PET  
+
+- Single-cell variants  
+
+- SPRITE, GAM, ChIA-Drop  
+
+- Specialized (e.g., Methyl-HiC)
+]
+
+.pull-right[ 
+&lt;br&gt; &amp;nbsp;
+&lt;img src="img/proximity_ligation.png" height = 250&gt; 
+&lt;br&gt; &amp;nbsp;
+]
+.small[ Lieberman-Aiden, Erez et al. “[Comprehensive Mapping of Long-Range Interactions Reveals Folding Principles of the Human Genome](https://doi.org/10.1126/science.1181369)” _Science_, October 9, 2009 ]
+
+
+---
+## Hi-C Data as a matrix
+
+.pull-left[
+- The genome (chromosome) is split into equally sized regions
+
+- Data is represented by a symmetric matrix of contacts `\(C_{ij}\)` where entry `\(ij\)` corresponds to the number of times region `\(i\)` comes into contact with region `\(j\)`
+
+- Off-diagonal data view - increasing **distance** between interacting regions
+
+- Power-law decay of interactions with increasing **distance**
+]
+
+.pull-right[
+&lt;img src="img/hicmatrix.png" width = 470&gt;
+]
+
+---
+## Biases in Hi-C data
+
+- Hi-C data suffers from many biases: **sequence-driven** (e.g., mappability, CG content) &amp; **technology-driven** (e.g., type of restriction enzyme, sequencing platform)
+
+- Most normalization methods work only on individual Hi-C dataset, one at a time
+
+- Individual normalization methods do not perform well when the goal is comparison
+
+&lt;!--
+.small[Lyu, Hongqiang, Erhu Liu, and Zhifang Wu. “[Comparison of Normalization Methods for Hi-C Data](https://europepmc.org/article/med/31588782).” BioTechniques 68, no. 2 (2020)
+
+Zheng, Ye, Peigen Zhou, and Sündüz Keleş. “[FreeHi-C Spike-in Simulations for Benchmarking Differential Chromatin Interaction Detection](https://doi.org/10.1016/j.ymeth.2020.07.001).” Methods, July 2020]
+--&gt;
+
+---
+class: center, middle
+
+# HiCcompare
+
+Joint normalization and differential analysis of Hi-C data
+
+---
+## Joint Normalization on the MD plot
+
+.pull-left[ 
+- **MD plot** represents data from two Hi-C matrices on one plot  
+
+- Similar to the MA plot (Bland-Altman plot)  
+
+- X-axis: **Genomic Distance** (off-diagonal data slices)  
+
+- Y-axis: **Mean differences in interaction frequencies** (log2(IF2/IF1))
+]
+
+.pull-right[
+&lt;img src="img/mdplot.png" width = 350&gt;
+]
+
+---
+## Loess regression
+
+.pull-left[ 
+- Differences between two datasets should be minimal (symmetric around M = 0, Y-axis)
+
+- Local Regression – fit based on local subsets of the data
+
+- Nonlinear, data-driven - creates a smooth curve through the data
+
+- Can use loess fit to correct for bias
+]
+
+.pull-right[ 
+.center[&lt;img src="img/loess_gif.gif" height = 380&gt;]
+]
+
+---
+## Joint Loess Normalization of Hi-C Data
+
+.pull-left[ 
+- Differences between two datasets should be minimal (symmetric around M = 0, Y-axis)
+
+- Perform loess regression on the MD plot to calculate `\(f(D)\)` - the predicted interaction frequency `\(IF\)` value at distance `\(D\)`
+.small[
+- `\(log_2(\hat{IF_{1D}})=log_2(IF_{1D})-f(D)/2\)`
+- `\(log_2(\hat{IF_{2D}})=log_2(IF_{2D})+f(D)/2\)`
+- Average `\(IF\)` for the pair remains unchanged
+]
+]
+
+.pull-right[ 
+.center[&lt;img src="img/normalization_loess.png" height = 400&gt;]
+]
+
+.small[ Benchmarking study: Lyu, Hongqiang, Erhu Liu, and Zhifang Wu. “[Comparison of Normalization Methods for Hi-C Data](https://doi.org/10.2144/btn-2019-0105)” _BioTechniques_, October 7, 2019
+]
+
+---
+## Difference detection
+
+.pull-left[ 
+- At each distance, take a set of M-values
+
+- Convert M-values to Z-scores `\(Z_i=\frac{M_i-\hat{M}}{\sigma_M}\)`
+
+- Z-scores are compared to standard normal distribution to obtain p-values
+
+- FDR multiple testing correction applied on a per-distance basis
+]
+.pull-right[ 
+.center[&lt;img src="img/HiCcompare_vs_diffHiC.png" height = 400&gt;]
+]
+
+---
+## Difference Detection After Different Normalizations
+
+.pull-left[ 
+- Simulated 100x100 chromatin interaction matrices with 250 controlled changes applied
+
+- ROC curves for different normalization techniques and fold changes
+
+- Loess provides the most power to detect small fold changes
+
+.small[ https://bioconductor.org/packages/HiCcompare/  
+
+Stansfield, John C., Kellen G. Cresswell, Vladimir I. Vladimirov, and Mikhail G. Dozmorov. “[HiCcompare: An R-Package for Joint Normalization and Comparison of HI-C Datasets](https://doi.org/10.1186/s12859-018-2288-x)” _BMC Bioinformatics_, December 2018 ]
+]
+.pull-right[ 
+.center[&lt;img src="img/HiCcompare_ROC.png" height = 500&gt;]
+]
+
+
+---
+class: center, middle
+
+# multiHiCcompare
+
+Normalization and differential analysis of multiple Hi-C datasets
+
+---
+## Normalization: Multiple Hi-C datasets
+
+**Cyclic loess** (Ballman et al. 2004) to jointly normalize multiple datasets - take each pair of datasets, normalize, repeat until convergence
+
+1. Choose two out of the N total samples, then generate an MD plot
+2. Fit a loess curve `\(f(D)\)` to the MD plot
+3. Subtract `\(f(D)/2\)` from the first dataset and add `\(f(D)/2\)` to the second
+4. Repeat until all unique pairs have been compared
+5. Repeat until convergence
+
+&lt;br&gt; &amp;nbsp; &lt;br&gt; &amp;nbsp; 
+
+.small[Ballman, Karla V., Diane E. Grill, Ann L. Oberg, and Terry M. Therneau. “[Faster Cyclic Loess: Normalizing RNA Arrays via Linear Models](https://doi.org/10.1093/bioinformatics/bth327).” Bioinformatics (Oxford, England) 20, no. 16 (November 1, 2004)]
+
+---
+## Differential analysis: Multiple Hi-C datasets
+
+- **Distance-centric analysis** – each off-diagonal data slice has unique statistical properties  
+
+- Split Hi-C data into `\(d\)` distance-centric matrices with `\(g\)` rows (indices for interacting pairs of regions) and `\(i\)` columns (samples)
+
+.center[&lt;img src="img/multiHiCcompare_glm.png" height = 350&gt;]
+
+---
+## Differential analysis: Multiple Hi-C datasets
+
+- Statistical framework of differential gene expression analysis can be adapted for differential analysis of IFs ([edgeR](https://bioconductor.org/packages/edgeR/) R package)
+
+- **Exact test**
+
+.small[
+- For comparing 2 groups without other covariates
+- Similar to Fisher's exact test
+- Computes exact p-values by summing over all sums of counts that have a probability less than the probability under the null hypothesis
+]
+
+- **Generalized Linear Models**
+
+.small[
+- For more complex experiments, utilize the GLM framework
+- The IF value for a pair of regions `\(g\)` at distance `\(d\)` from sample `\(i\)` follows `\(NB(M_{di}*p_{dgj},\phi_{dg})\)`, where `\(M_{di}\)` is the total number of reads in sample `\(i\)` at distance `\(d\)`, `\(p_{dgj}\)` is the proportion of interaction counts `\(g\)` in sample `\(i\)` from experimental condition `\(j\)`, `\(\phi_{dg}\)` is the dispersion
+- The vector of covariates `\(x_i\)` can be linked with `\(\mu_{dgj}\)` through a log-linear model `\(log(\mu_{dgj}) = x_i^T\beta_{dg} + log(M_{dj})\)`
+]
+
+---
+## Analysis overview: Multiple Hi-C datasets
+
+.center[&lt;img src="img/hiccompare2_flowchart_wide.png" height = 450&gt;]
+
+.small[
+Benchmarking study: Zheng, Ye, Peigen Zhou, and Sündüz Keleş. “[FreeHi-C Spike-in Simulations for Benchmarking Differential Chromatin Interaction Detection](https://doi.org/10.1016/j.ymeth.2020.07.001)” _Methods_, July 12, 2020
+]
+
+---
+## Benchmarking
+
+.center[&lt;img src="img/multiHiCcompare_ROC.png" height = 400&gt;]
+
+.small[ https://bioconductor.org/packages/multiHiCcompare/ 
+
+Stansfield, John C, Kellen G Cresswell, and Mikhail G Dozmorov. “[MultiHiCcompare: Joint Normalization and Comparative Analysis of Complex Hi-C Experiments](https://doi.org/10.1093/bioinformatics/btz048).” Bioinformatics, January 22, 2019 ]
+
+
+&lt;!--
+## Benchmarking
+
+.center[&lt;img src="img/multiHiCcompare_MCC.png" height = 450&gt;]
+
+.small[ https://bioconductor.org/packages/multiHiCcompare/ ]
+--&gt;
+
+---
+class: center, middle
+
+# SpectralTAD
+
+Detection of Topologically Associating Domains using Spectral Clustering
+
+---
+## Topologically Associating Domains
+
+- TADs are 3D structures of frequently interacting regions 
+- Boundaries are associated with specific genomic features (CTCF, cohesin, mediator)
+- Can be hierarchical (nested, TADs containing sub-TADs)
+
+.center[&lt;img src="img/Hierarchical_TADs.png" height = 350&gt;]
+
+---
+## Why are TADs Important?
+
+- Established early in development
+
+- Highly correlate with replication timing
+
+- TADs create "autonomous gene-domains" partitioning the genome into discrete functional regions
+
+- Disruptions of TADs lead to _de novo_ enhancer-promoter interactions and dysregulation of gene expression -&gt; disease
+
+TADs are a distinct layer of the 3D genome organization
+
+---
+## TAD detection using graph theory
+
+.pull-left[ 
+- Hi-C data has a natural graph structure, defined by vertices `\(V\)` and edges `\(E\)`
+    - **Vertices** are genomic regions
+    - **Edges** represent interaction strength between any pair of regions
+
+- Vertices and edges are stored in an **adjacency matrix** `\(A_{ij}\)` where `\(ij\)` is the number of edges between a given set of vertices `\(ij\)`
+]
+
+.pull-right[ .center[&lt;img src="img/Graph_Plot.png" height = 500&gt;] 
+&lt;br&gt; &amp;nbsp; &lt;br&gt; &amp;nbsp; &lt;br&gt; &amp;nbsp; &lt;br&gt; &amp;nbsp; &lt;br&gt; &amp;nbsp; &amp;nbsp; &lt;br&gt; ]
+
+---
+## Traditional Spectral Clustering
+
+- Specifically designed to cluster graphs
+
+- Works by projecting the data into a lower-dimensional space
+
+- Excels on noisy and non-normally distributed data (Hi-C data)
+
+&lt;!-- Clusters the adjacency matrix `\(A_{n \times n}\)` --&gt;
+
+---
+## How to perform spectral clustering
+
+- Calculate the Laplacian:
+`$$D = diag(A\mathbf{1_n})$$`
+`$$\bar{L} = D^{-\frac{1}{2}}AD^{-\frac{1}{2}}$$`
+- Calculate the eigenvectors of the Laplacian matrix (graph spectrum):
+`$$\bar{L}\mathbf{v} = \lambda\mathbf{v}$$`
+- Normalize the eigenvectors and cluster
+
+---
+## Spectral clustering with eigenvector gaps
+
+- Rows and columns of Hi-C matrices are naturally ordered
+
+- TADs are continuous 
+
+- Order points (genomic regions) in eigenvector space, and cluster
+
+- We propose a simple, novel approach to clustering ordered data using gaps between consecutive points in eigenvector space
+
+---
+## Step 1: Plot the non-normalized eigenvectors
+
+.center[&lt;img src="img/Norm_Eigs1.png" height = 500&gt;]
+
+---
+## Step 2: Project on to Unit Circle
+ 
+.center[&lt;img src="img/Norm_Eigs2.png" height = 500&gt;]
+
+---
+## Step 3: Find the k-largest gaps and partition
+
+.center[&lt;img src="img/Norm_Eigs3.png" height = 500&gt;]
+
+---
+## Step 3: Find the k-largest gaps and partition
+
+.center[&lt;img src="img/Norm_Eigs4.png" height = 500&gt;]
+
+&lt;!--
+## Silhouette Score
+
+- A strong TAD should have a high level of interactions within the TAD and a low level of interactions between the TAD
+- This can be quantified using silhouette score:
+
+`$$s(i) = \frac{b(i)-a(i)} {max(a(i), b(i))}$$`
+
+`\(b(i)\)` is the mean distance between point `\(i\)` and all values in its cluster, and `\(a(i)\)` is the mean distance between point `\(i\)` all values outside of its cluster
+
+- Here, we define distance between two points `\(i\)` and `\(j\)` as `\(\frac{1}{1+C_{ij}}\)`
+--&gt;
+
+---
+## Windowed Spectral Clustering
+
+- We know the biologically maximum TAD size (2 million bp)
+
+- We can use a 2 million bp sliding window to perform spectral clustering and aggregate
+
+- Advantages of the sliding window
+  - Reduced cubic complexity of spectral clustering `\(O(n^{3})\)` to linear complexity `\(O(n)\)`
+  - Naturally discards noisy interactions at large genomic distances
+
+---
+## SpectralTAD algorithm
+ 
+1. Cut a window from the matrix equal to the maximum TAD size (2Mb)
+2. Find the graph spectrum of the window and calculate eigenvector gaps
+&lt;!--3. Find `\(n\)`-largest gap values--&gt;
+3. Find a set of clusters that maximize the silhouette score
+4. Slide the window to the next group of loci and repeat
+
+.center[&lt;img src="img/SpectralTAD_overview.png" height = 300&gt;]
+
+---
+## Determining a hierarchy of TADs
+
+- TADs are hierarchical in nature (organized into large meta-TADs with sub-TADs within them)
+
+- To find sub-TADs, we use a novel metric called boundary score
+
+- **Boundary score** is just the z-score for each eigenvector gap (Euclidean distance between adjacent points)
+
+.center[&lt;img src="img/Norm_Eigs3.png" height = 250&gt;]
+
+---
+## Boundary score as a metric for TAD boundary detection
+
+.center[&lt;img src="img/Boundary_score.png" height = 450&gt;]
+
+---
+## Determining a hierarchy of TADs
+
+For each initial TAD:
+
+- Perform spectral clustering on the submatrix defined by the initial TAD
+
+- Calculate the eigenvector gaps for each consecutive pair of regions
+
+- Convert eigenvector gaps to boundary scores
+
+- If any boundary score is greater than 1.96, this is a sub-TAD boundary
+
+- Repeat for all sub-TADs until no z-score is greater than 1.96
+
+---
+## TAD Calling: SpectralTAD
+
+- We compared SpectralTAD against four TAD callers:
+  - TopDom
+  - HiCSeg
+  - OnTAD
+  - rGMAP
+
+- Good TAD caller must satisfy three criteria:
+  - Be robust to Hi-C data imperfections (resolution, sparsity, sequencing depth)
+  - Detect biologically significant, hierarchical TAD boundaries
+  - Be fast
+
+---
+## SpectralTAD is robust to resolution
+
+.center[&lt;img src="img/Resolution.png" height = 500&gt;]
+
+---
+## SpectralTAD is robust to sparsity
+
+- 25 simulated matrices with pre-defined TADs (HiCToolsCompare)
+- The percentage of the matrix replaced with zeros
+- Jaccard similarity between the detected and pre-defined TADs
+
+.center[&lt;img src="img/Sparsity_Comb.png" height = 400&gt;]
+
+---
+## SpectralTAD is robust to sequencing depth
+
+- Downsample matrices uniformly at random
+- Measure Jaccard similarity between TADs detected from the original and sparse data
+
+.center[&lt;img src="img/Down_Comb.png" height = 400&gt;]
+
+---
+## Hierarchical TAD boundaries differ
+
+- Boundaries shared by two TADs (Level 2) or three TADs (Level 3) are more biologically significant
+
+.center[&lt;img src="img/Fig_4.png" height = 450&gt;]
+
+---
+## SpectralTAD is fast
+ 
+A) Runtimes for various TAD callers at different chromosome sizes
+B) Runtimes for various TAD callers across all chromosomes (25kb data)
+
+.center[&lt;img src="img/Runtime_Plot.png" height = 400&gt;]
+
+---
+## SpectralTAD Package
+
+- **Input**: three types of contact matrices ( `\(n \times n\)`, sparse and `\(n \times (n+3)\)`) in text format, import from `.hic` and `.cool` files supported
+
+- Two main functions: `SpectralTAD` and `SpectralTAD_Par` (parallelized)
+
+- **Output**: A 3-column BED file for each hierarchy level
+
+- Visualization options include output for `Juicebox`
+
+&lt;br&gt; &amp;nbsp; &lt;br&gt; &amp;nbsp; 
+
+.small[ https://bioconductor.org/packages/SpectralTAD/
+
+Cresswell, Kellen G., John C. Stansfield, and Mikhail G. Dozmorov. “[SpectralTAD: An R Package for Defining a Hierarchy of Topologically Associated Domains Using Spectral Clustering](https://doi.org/10.1186/s12859-020-03652-w)” _BMC Bioinformatics_, July 20, 2020
+ ]
+
+---
+class: center, middle
+
+# TADcompare
+
+Differential and time course analysis of TAD boundaries
+
+---
+## Comparing TADs (TADcompare)
+
+.pull-left[ 
+- Boundary score can be compared across conditions – differential boundary score  
+
+.center[&lt;img src="img/Boundary_score.png" height = 350&gt;]
+ ]
+
+.pull-right[ .center[&lt;img src="img/TADs_differential.png" height = 550&gt;] ]
+
+.small[ Cresswell, Kellen G., and Mikhail G. Dozmorov. “[TADCompare: An R Package for Differential and Temporal Analysis of Topologically Associated Domains](https://doi.org/10.3389/fgene.2020.00158)” _Frontiers in Genetics_, March 10, 2020 ]
+
+---
+## Complex TAD boundary changes are frequent between biological replicates and cell/tissue types
+
+.center[&lt;img src="img/TADcompare_proportions.png" height = 400&gt;]
+
+---
+## Distinct biology of differential TAD boundaries
+
+- Non-differential boundaries are most enriched in CTCF and other boundary marks – conserved, biologically important  
+
+- Shifted boundaries are least enriched – shifts are likely due to noisy data
+
+.center[&lt;img src="img/TADs_differential_enrichment.png" height = 350&gt;]
+
+---
+## Dynamics of the 3D genome over time course
+
+.pull-left[ 
+- Boundary score allows investigating changes in TAD boundaries over time course   
+
+- Six patterns of boundary changes over time
+]
+
+.pull-right[ .center[&lt;img src="img/TADs_timecourse.png" height = 450&gt;] ]
+
+---
+## Distinct biology of different patterns of TAD boundary changes
+
+- Auxin treatment experiment - eliminate TAD boundaries with auxin, wash auxin out, observe TAD boundaries recovery
+
+- Early and Late appearing boundaries are most enriched in CTCF, RAD21
+
+.center[&lt;img src="img/TADcompare_timecourse.png" height = 300&gt;]
+
+---
+## Time course Hi-C data analysis
+
+- Part of the TADcompare package
+
+- Requires three or more time points
+
+- Can handle replicates at each time point
+
+&lt;br&gt; &amp;nbsp; &lt;br&gt; &amp;nbsp; &lt;br&gt; &amp;nbsp;  
+
+.small[ https://bioconductor.org/packages/TADCompare/
+
+Cresswell, Kellen G., and Mikhail G. Dozmorov. “[TADCompare: An R Package for Differential and Temporal Analysis of Topologically Associated Domains](https://doi.org/10.3389/fgene.2020.00158)” _Frontiers in Genetics_, March 10, 2020 ]
+
+---
+class: center, middle
+
+# Understanding the biology of differential chromatin interactions
+
+---
+## 3D genome of cancer metastasis and drug resistance
+
+- Patient Derived Xenograft (PDX) mouse models of breast cancer  
+
+- Progression of the primary tumor to metastatic and drug resistant states
+
+.center[&lt;img src="img/PDX_HiC_experimental.png" height = 400&gt;]
+
+---
+## Analysis of PDX Hi-C data (PDX Hi-C)
+
+.pull-left[ 
+- Mouse reads have minimal effect on Hi-C data - direct alignment to the human genome works well  
+
+- Processing pipeline plays minimal role
+
+- Technology is the most important for data quality
+]
+
+.pull-right[ .center[&lt;img src="img/PDX_HiC_pipeline.png" height = 500&gt;] ]
+
+.small[Dozmorov, Mikhail G, Katarzyna M Tyc, Nathan C Sheﬃeld, David C Boyd, Amy L Olex, Jason Reed, and J Chuck Harrell. “[Chromatin Conformation Capture (Hi-C) Sequencing of Patient-Derived Xenografts: Analysis Guidelines](https://www.biorxiv.org/content/10.1101/2020.10.17.343814v2)” _bioRxiv_ October 19, 2020]
+
+&lt;!--
+## Methods as software
+
+.center[&lt;img src="img/packages.png" height = 470&gt;]
+
+.small[ https://dozmorovlab.github.io/ ]
+--&gt;
+
+---
+## Summary
+
+- **Distance-centric view** of Hi-C data is critical (`MD plot`)
+
+- **Joint loess normalization** effectively removes between-dataset biases ([HiCcompare](https://bioconductor.org/packages/HiCcompare/))
+
+- **Differential analysis considering distance** has optimal performance ([multiHiCcompare](https://bioconductor.org/packages/multiHiCcompare/))
+
+- **Spectral clustering** robustly detects biologically relevant hierarchical TADs ([SpectralTAD](https://bioconductor.org/packages/SpectralTAD/))
+
+- **Boundary score** enables differential and time course analysis of TAD boundaries ([TADcompare](https://bioconductor.org/packages/TADCompare/))
+
+&lt;!--
+- **Machine learning** using genome annotations detects exact TAD/loop boundary locations ([preciseTAD]())
+--&gt;
+
+.small[https://github.com/mdozmorov/HiC_tools]
+
+---
+## Acknowledgements
+
+.pull-left[ .center[&lt;img src="img/lab_photos.png" height = 450&gt;] 
+
+.small[https://dozmorovlab.github.io/]
+]
+
+.pull-rignt[ ### Collaborators  
+
+Virginia Commonwealth University  
+
+- J. Chuck Harrell
+
+&lt;br&gt; &amp;nbsp;
+
+### Funding
+
+- American Cancer Society pilot award  
+- PhRMA Foundation grant  
+- Blick scholarship  
+
+.center[&lt;img src="img/funding.png" height = 30&gt;]
+]
+
+---
+class: center, middle
+
+# Thank you
+
+[bit.ly/3Dgenomics](https:/bit.ly/3Dgenomics)
+
+&lt;div class="my-footer"&gt;
+&lt;a href="https://dozmorovlab.github.io/"&gt; &lt;svg viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;"&gt;  [ comment ]  &lt;path d="M528 32H48C21.5 32 0 53.5 0 80v16h576V80c0-26.5-21.5-48-48-48zM0 432c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V128H0v304zm352-232c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16zm0 64c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16zm0 64c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16zM176 192c35.3 0 64 28.7 64 64s-28.7 64-64 64-64-28.7-64-64 28.7-64 64-64zM67.1 396.2C75.5 370.5 99.6 352 128 352h8.2c12.3 5.1 25.7 8 39.8 8s27.6-2.9 39.8-8h8.2c28.4 0 52.5 18.5 60.9 44.2 3.2 9.9-5.2 19.8-15.6 19.8H82.7c-10.4 0-18.8-10-15.6-19.8z"&gt;&lt;/path&gt;&lt;/svg&gt; dozmorovlab.github.io&lt;/a&gt; | 
+&lt;a href="https://github.com/mdozmorov"&gt; &lt;svg viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;"&gt;  [ comment ]  &lt;path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"&gt;&lt;/path&gt;&lt;/svg&gt; mdozmorov&lt;/a&gt; | 
+&lt;a href="https://twitter.com/mikhaildozmorov"&gt; &lt;svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;"&gt;  [ comment ]  &lt;path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"&gt;&lt;/path&gt;&lt;/svg&gt; @mikhaildozmorov&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;!--
+## Interpretation of differentially interacting chromatin regions (DIRs)
+
+- **Visualization of DIRs.** A Manhattan-like plot of DIRs may inform us about abnormalities or reveal chromosome site-specific enrichment of differentially interacting regions
+
+.center[&lt;img src="img/manhattan.png" height = 350&gt;]
+
+
+## Interpretation of differentially interacting chromatin regions (DIRs)
+
+- **Overlap between differentially expressed genes and DIRs.** If gene expression measurements are available, differentially expressed genes may be tested for overlap with DIRs - test the link between DIRs and changed gene expression
+
+- **Functional enrichment of genes overlapping DIRs.** DIRs may disrupt specific pathways/functions - test whether genes overlapping DIRs are enriched in a canonical pathway or share a common function
+
+
+## Interpretation of differentially interacting chromatin regions (DIRs)
+
+- **Overlap enrichment between TAD boundaries and DIRs.** DIRs may correspond to TAD boundaries that are deleted or created - test DIRs for significant overlap with TAD boundaries detected in either condition or only in boundaries changed between the conditions
+
+- **Overlap between DIRs and transcription factor binding sites.** DIRs may correspond to the locations where proteins bind to DNA, such as CTCF sites - test for enrichment of DIRs in any genome annotation (epigenomic mark)
+
+
+## Interpretation of differentially interacting regions
+
+.pull-left[ .center[&lt;img src="img/multiHiCcompare_tutorial.png" height = 450&gt;] ]
+
+.pull-right[ .center[&lt;img src="img/Tutorial_Front_cover.png" height = 450&gt;] ]
+
+.small[ Stansfield, John C., Duc Tran, Tin Nguyen, and Mikhail G. Dozmorov. “[R Tutorial: Detection of Differentially Interacting Chromatin Regions From Multiple Hi-C Datasets](https://doi.org/10.1002/cpbi.76)” _Curr Prot in Bioinformatics_, May 24, 2019
+]
+
+class: center, middle
+
+# preciseTAD
+
+
+## Machine learning for TAD boundary prediction
+
+.pull-left[ 
+- **preciseTAD** – a random forest model using genomic annotations for predicting the probability of each base being a boundary
+
+- Train a model on low-resolution Hi-C regions - binary classification of annotated boundary/non-boundary regions
+
+- Apply the model to each annotated base - predict the likelihood of a base being a boundary
+
+]
+
+.pull-right[ .center[&lt;img src="img/preciseTAD_features.png" height = 400&gt;] 
+]
+
+.small[ Stilianoudakis, Spiro C. “[PreciseTAD: A Machine Learning Framework for Precise 3D Domain Boundary Prediction at Base-Level Resolution](https://doi.org/10.1101/2020.09.03.282186)” _bioRxiv_ Sept 29, 2020]
+
+
+## Machine learning for TAD boundary prediction
+
+.pull-left[ 
+
+- Different resolutions (5kb)
+
+- Four feature engineering techniques (distance)
+
+- Four approaches to class imbalance (RUS or SMOTE)
+
+- Three types of genome annotations (Transcription factors (CTCF, SMC3, RAD21, ZNF143), Histone modifications, Chromatin states)
+]
+
+.pull-right[ .center[&lt;img src="img/preciseTAD_schema.png" height = 500&gt;] 
+]
+
+.small[ Stilianoudakis, Spiro C. “[PreciseTAD: A Machine Learning Framework for Precise 3D Domain Boundary Prediction at Base-Level Resolution](https://doi.org/10.1101/2020.09.03.282186)” _bioRxiv_ Sept 29, 2020]
+
+
+## Machine learning for TAD boundary prediction
+
+.pull-left[ 
+- DBSCAN clustering and PAM to identify boundary regions and summit points  
+
+- Summits are highly enriched in CTCT et al. signal
+
+- Pre-trained models predict boundaries using only genome annotation data 
+
+.small[ Stilianoudakis, Spiro C. “[PreciseTAD: A Machine Learning Framework for Precise 3D Domain Boundary Prediction at Base-Level Resolution](https://doi.org/10.1101/2020.09.03.282186)” _bioRxiv_ Sept 29, 2020]
+]
+
+.pull-right[ .center[&lt;img src="img/preciseTAD_overview.png" height = 500&gt;] 
+]
+--&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

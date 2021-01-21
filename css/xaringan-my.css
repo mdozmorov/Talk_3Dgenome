@@ -1,0 +1,18 @@
+/* https://github.com/yihui/xaringan/wiki/Font-Size */
+.large { font-size: 130% }
+.small { font-size: 70% }
+.tiny{ font-size: 40% }
+
+div.my-footer {
+    position: absolute;
+    bottom: 30px;
+    left: 0px;
+    height: 20px;
+    width: 100%;
+}
+div.my-footer span {
+    font-size: 10pt;
+    position: absolute;
+    left: 15px;
+    bottom: 2px;
+}
