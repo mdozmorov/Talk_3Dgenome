@@ -33,7 +33,7 @@ class: center, middle
 
 ### Detecting and interpreting changes in the 3D genome organization
 
-[bit.ly/3Dgenomics](https:/bit.ly/3Dgenomics)
+[bit.ly/3Dgenomics](https://mdozmorov.github.io/Talk_3Dgenome/)
 
 Mikhail Dozmorov, Ph.D.    
 Associate professor, Department of Biostatistics  
@@ -705,7 +705,7 @@ class: center, middle
 
 # Thank you
 
-[bit.ly/3Dgenomics](https:/bit.ly/3Dgenomics)
+[bit.ly/3Dgenomics](https://mdozmorov.github.io/Talk_3Dgenome/)
 
 <div class="my-footer">
 <a href="https://dozmorovlab.github.io/"> `r icon::fontawesome("id-card", style = "solid")` dozmorovlab.github.io</a> | 
