@@ -15,7 +15,7 @@ output:
 
 ```{r xaringan-themer, include = FALSE}
 library(xaringanthemer)
-library(icon)
+library(icons)
 mono_light(
   base_color = "midnightblue",
   header_font_google = google_font("Noto Sans"),
@@ -31,7 +31,7 @@ class: center, middle
 
 # The genome in action
 
-### Detecting and interpreting changes in the 3D genome organization
+### Detecting and interpreting changes in 3D genome organization
 
 [bit.ly/3Dgenomics](https://mdozmorov.github.io/Talk_3Dgenome/)
 
@@ -41,9 +41,9 @@ Virginia Commonwealth University
 
 
 <div class="my-footer">
-<a href="https://dozmorovlab.github.io/"> `r icon::fontawesome("id-card", style = "solid")` dozmorovlab.github.io</a> | 
-<a href="https://github.com/mdozmorov"> `r icon::fontawesome$brands$github` mdozmorov</a> | 
-<a href="https://twitter.com/mikhaildozmorov"> `r icon::fontawesome$brands$twitter` @mikhaildozmorov</a>
+<a href="https://dozmorovlab.github.io/"> `r icons::fontawesome("id-card", style = "solid")` dozmorovlab.github.io</a> | 
+<a href="https://github.com/mdozmorov"> `r icons::fontawesome$brands$github` mdozmorov</a> | 
+<a href="https://twitter.com/mikhaildozmorov"> `r icons::fontawesome$brands$twitter` @mikhaildozmorov</a>
 </div>
 
 ---
@@ -70,7 +70,7 @@ II. Detection and differential analysis of Topologically Associating Domains (TA
 ## The 3D structure of the genome
 
 - Human genome is big - ~3.2 billion base pairs
-- ~4 meters (~12ft) of the diploid genome is packed into the ~10um nucleus
+- ~4 meters (~12ft) of diploid genome is packed into ~10um nucleus
 - ~800 trips from Earth to Sun in ~30T cells from the human body
 
 .center[<img src="img/genome_scales.png" width = 600>]
@@ -87,7 +87,7 @@ Human body has approximately 30 trillion human cells (excluding trillions of mic
 
 - Changes in the 3D genome organization are an ~~emerging~~ established hallmark of cancer
 
-- Disruption of the 3D genomic structure can lead to rewiring of enhancer-promoter interactions and changes in gene expression -> disease
+- Disruption of 3D genomic structure can lead to rewiring of enhancer-promoter interactions and changes in gene expression -> disease
 
 ---
 ## Chromatin conformation capture technologies 
@@ -646,7 +646,13 @@ class: center, middle
 
 .pull-right[ .center[<img src="img/PDX_HiC_pipeline.png" height = 500>] ]
 
-.small[Dozmorov, Mikhail G, Katarzyna M Tyc, Nathan C Sheﬃeld, David C Boyd, Amy L Olex, Jason Reed, and J Chuck Harrell. “[Chromatin Conformation Capture (Hi-C) Sequencing of Patient-Derived Xenografts: Analysis Guidelines](https://www.biorxiv.org/content/10.1101/2020.10.17.343814v2)” _bioRxiv_ October 19, 2020]
+.small[Dozmorov, Mikhail G, Katarzyna M Tyc, Nathan C Sheﬃeld, David C Boyd, Amy L Olex, Jason Reed, and J Chuck Harrell. “[Chromatin Conformation Capture (Hi-C) Sequencing of Patient-Derived Xenografts: Analysis Guidelines](https://doi.org/10.1093/gigascience/giab022)” _GigaScience_ April 21, 2021]
+
+---
+## 3D genome of cancer metastasis and drug resistance
+
+.center[<img src="img/UCD52_1000000_CRvsPR_log2ratio_perchr.png" height = 550>]
+
 
 <!--
 ## Methods as software
@@ -689,15 +695,15 @@ Virginia Commonwealth University
 
 - J. Chuck Harrell
 
-<br> &nbsp;
+<!-- <br> &nbsp; -->
 
 ### Funding
 
-- American Cancer Society pilot award  
-- PhRMA Foundation grant  
-- Blick scholarship  
+- American Cancer Society  
+- PhRMA Foundation  
+- The George and Lavinia Blick Research Fund
 
-.center[<img src="img/funding.png" height = 30>]
+.center[<img src="img/funding.png" height = 50>]
 ]
 
 ---
@@ -708,9 +714,9 @@ class: center, middle
 [bit.ly/3Dgenomics](https://mdozmorov.github.io/Talk_3Dgenome/)
 
 <div class="my-footer">
-<a href="https://dozmorovlab.github.io/"> `r icon::fontawesome("id-card", style = "solid")` dozmorovlab.github.io</a> | 
-<a href="https://github.com/mdozmorov"> `r icon::fontawesome$brands$github` mdozmorov</a> | 
-<a href="https://twitter.com/mikhaildozmorov"> `r icon::fontawesome$brands$twitter` @mikhaildozmorov</a>
+<a href="https://dozmorovlab.github.io/"> `r icons::fontawesome("id-card", style = "solid")` dozmorovlab.github.io</a> | 
+<a href="https://github.com/mdozmorov"> `r icons::fontawesome$brands$github` mdozmorov</a> | 
+<a href="https://twitter.com/mikhaildozmorov"> `r icons::fontawesome$brands$twitter` @mikhaildozmorov</a>
 </div>
 
 <!--
