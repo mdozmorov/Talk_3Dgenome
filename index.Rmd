@@ -31,14 +31,13 @@ class: center, middle
 
 # The genome in action
 
-### Detecting and interpreting changes in 3D genome organization
+### Detecting and interpreting changes in the 3D genome organization
 
 [bit.ly/3Dgenomics](https://mdozmorov.github.io/Talk_3Dgenome/)
 
 Mikhail Dozmorov, Ph.D.    
 Associate professor, Department of Biostatistics  
 Virginia Commonwealth University   
-
 
 <div class="my-footer">
 <a href="https://dozmorovlab.github.io/"> `r icons::fontawesome("id-card", style = "solid")` dozmorovlab.github.io</a> | 
@@ -637,7 +636,7 @@ class: center, middle
 ## Analysis of PDX Hi-C data (PDX Hi-C)
 
 .pull-left[ 
-- Mouse reads have minimal effect on Hi-C data - direct alignment to the human genome works well  
+- Mouse reads minimally affect Hi-C data - direct alignment to the human genome works well  
 
 - Processing pipeline plays minimal role
 
@@ -712,6 +711,10 @@ class: center, middle
 # Thank you
 
 [bit.ly/3Dgenomics](https://mdozmorov.github.io/Talk_3Dgenome/)
+
+<br> <br> <br>
+
+Bioinformatics postdoc, research assistant positions available
 
 <div class="my-footer">
 <a href="https://dozmorovlab.github.io/"> `r icons::fontawesome("id-card", style = "solid")` dozmorovlab.github.io</a> | 
