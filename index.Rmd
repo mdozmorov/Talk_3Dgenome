@@ -690,9 +690,8 @@ class: center, middle
 
 .pull-rignt[ ### Collaborators  
 
-Virginia Commonwealth University  
-
-- J. Chuck Harrell
+- J. Chuck Harrell (VCU, Pathology)
+- Ay lab (La Jolla Institute for Immunology)
 
 <!-- <br> &nbsp; -->
 
